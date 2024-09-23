@@ -15,17 +15,17 @@ namespace HerenciaPoligonos
             this.Lado1 = lado1;
             this.Lado2 = lado2;
         }
-        public double CalcularArea()
+        public override double CalcularArea()
         {
             double area = Lado1 * Lado2;
-            Console.WriteLine("Área del rectangulo: " + area);
+            //Console.WriteLine("Área del rectangulo: " + area);
             return area;
         }
 
-        public double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
             double perimetro = Lado1 * 2 + Lado2 * 2;
-            Console.WriteLine("Perímetro del rectángulo: " + perimetro);
+            //Console.WriteLine("Perímetro del rectángulo: " + perimetro);
             return perimetro;
         }
         public override string ToString()

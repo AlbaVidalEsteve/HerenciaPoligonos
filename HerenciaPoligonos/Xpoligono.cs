@@ -14,17 +14,17 @@ namespace HerenciaPoligonos
         {
             Lado = lado;
         }
-        public double CalcularArea()
+        public override double CalcularArea()
         {
             double area = (NumLados * Math.Pow(Lado, 2)) / (4 * Math.Tan(Math.PI / NumLados));
-            Console.WriteLine($"Área del polígono con {NumLados} lados: " + area);
+            //Console.WriteLine($"Área del polígono con {NumLados} lados: " + area);
             return area;
         }
 
-        public double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
             double perimetro = Lado * NumLados;
-            Console.WriteLine($"Perímetro del polígono con {NumLados} lados:  " + perimetro);
+            //Console.WriteLine($"Perímetro del polígono con {NumLados} lados:  " + perimetro);
             return perimetro;
         }
 

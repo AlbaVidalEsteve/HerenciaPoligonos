@@ -16,17 +16,17 @@ namespace HerenciaPoligonos
             this.Diagonal1 = diagonal1;  
             this.Diagonal2 = diagonal2;
         }
-        public double CalcularArea()
+        public override double CalcularArea()
         {
             double area = (Diagonal1 * Diagonal2)/2;
-            Console.WriteLine("Área del rombo: " + area);
+            //Console.WriteLine("Área del rombo: " + area);
             return area;
         }
 
-        public double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
-            double perimetro = Diagonal1 * 2 + Diagonal2 * 2;
-            Console.WriteLine("Perímetro del rombo: " + perimetro);
+            double perimetro = Diagonal1 * 2 + Diagonal2 * 2; 
+            //Console.WriteLine("Perímetro del rombo: " + perimetro);
             return perimetro;
         }
 

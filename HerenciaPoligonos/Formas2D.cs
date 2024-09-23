@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HerenciaPoligonos
 {
-    internal class Formas2D
+    public abstract class Formas2D
     {
+        public abstract double CalcularArea();
+        public abstract double CalcularPerimetro();
     }
 }

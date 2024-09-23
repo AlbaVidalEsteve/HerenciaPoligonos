@@ -17,19 +17,25 @@ namespace HerenciaPoligonos
             this.Radio1 = radio1;
             this.Radio2 = radio2;   
         }
-        public double CalcularArea()
+        public override double CalcularArea()
         {
            
             double area = PI * Radio1 * Radio2;
-            Console.WriteLine("Área del elipse: " + area);
+            //Console.WriteLine("Área del elipse: " + area);
             return area;
         }
 
-        public double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
             double perimetro = PI*((3* Radio1 + Radio2) - Math.Sqrt((3* Radio1 + Radio2)*(Radio1 + 3*Radio2)));
-            Console.WriteLine("Perímetro del elipse: " + perimetro);
+            //Console.WriteLine("Perímetro del elipse: " + perimetro);
             return perimetro;
+        }
+
+        public override string ToString()
+        {
+            return $"Elispse con radios de {Radio1} y {Radio2}";
+
         }
     }
 }

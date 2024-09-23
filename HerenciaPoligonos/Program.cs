@@ -11,10 +11,13 @@ namespace HerenciaPoligonos
 
         static void Main(string[] args)
         {
-            string tipoCalculo = EscogeCalculo();
-            EscogeForma(tipoCalculo);
-            //HacerDiagrama();
-                       
+            Diagrama diagrama = new Diagrama();
+            diagrama.CrearDiagrama();
+            //diagrama.MostrarFormas();
+            diagrama.CalcularAreaTotal();
+            diagrama.CalcularPerimetroTotal();
+            //string tipoCalculo = EscogeCalculo();
+            //EscogeForma(tipoCalculo);     
             Console.ReadKey();
         }
 
@@ -33,10 +36,10 @@ namespace HerenciaPoligonos
             switch (formaEscogida)
             {
                 case "1": // Triángulo
-                    double lado1 = PedirValor("Lado1 1");
+                    double lado1 = PedirValor("Lado 1");
                     double lado2 = PedirValor("Lado 2");
                     double lado3 = PedirValor("Lado 3");
-
+                    
                     Triangulo triangulo1 = new Triangulo(lado1, lado2, lado3);
                     if (tipoCalculo == "1") // Área
                     {
@@ -226,13 +229,13 @@ namespace HerenciaPoligonos
             Console.Write(mensaje + ": ");
             return Convert.ToDouble(Console.ReadLine());
         }
-    
+
         //public static void CrearDiagrama()
         //{
         //    Console.WriteLine("Cuantas formas quieres?");
         //    int rnd = Next.Random(0, 50);
         //}
-
+        
     }
 }
 

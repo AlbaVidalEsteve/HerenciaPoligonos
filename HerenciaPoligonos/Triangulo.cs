@@ -11,25 +11,31 @@ namespace HerenciaPoligonos
         public double Lado1;
         public double Lado2;
         public double Lado3;
+        public double Area;
+        public double Perimetro;
         public Triangulo(double lado1, double lado2, double lado3) : base(3)
         {
             Lado1 = lado1;
             Lado2 = lado2;
             Lado3 = lado3;
+
+            Area =  CalcularArea();
+            Perimetro = CalcularPerimetro();
         }
 
-        public double CalcularArea()
+        public override double CalcularArea()
         {
             double semiperimetro = (Lado1 + Lado2 + Lado3) / 2;
+
             double area = Math.Sqrt(semiperimetro * (semiperimetro - Lado1) * (semiperimetro - Lado2) * (semiperimetro - Lado3));
-            Console.WriteLine("Área del triángulo: " + area);
+            //Console.WriteLine("Área del triángulo: " + area);
             return area;
         }
 
-        public double CalcularPerimetro()
+        public override double CalcularPerimetro()
         {
             double perimetro = Lado1 + Lado2 + Lado3;
-            Console.WriteLine("Perímetro del trángulo: " + perimetro);
+            //Console.WriteLine("Perímetro del trángulo: " + perimetro);
             return perimetro;
         }
 
