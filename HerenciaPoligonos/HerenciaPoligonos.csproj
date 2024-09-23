@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circulo.cs" />
+    <Compile Include="Cuadrado.cs" />
+    <Compile Include="Diagrama.cs" />
     <Compile Include="Elipse.cs" />
     <Compile Include="Formas2D.cs" />
     <Compile Include="Xpoligono.cs" />

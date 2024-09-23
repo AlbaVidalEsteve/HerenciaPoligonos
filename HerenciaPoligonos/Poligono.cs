@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HerenciaPoligonos
 {
-    internal class Poligono
+    internal class Poligono : Formas2D
     {
         public int NumLados;
         public Poligono(int numLados) 

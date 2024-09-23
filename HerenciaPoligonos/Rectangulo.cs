@@ -18,28 +18,14 @@ namespace HerenciaPoligonos
         public double CalcularArea()
         {
             double area = Lado1 * Lado2;
-            if (Lado1 == Lado2)
-            {
-                Console.WriteLine("Área del cuadrado: " + area);
-            }
-            else
-            {
-                Console.WriteLine("Área del rectángulo: " + area);
-            }
+            Console.WriteLine("Área del rectangulo: " + area);
             return area;
         }
 
         public double CalcularPerimetro()
         {
             double perimetro = Lado1 * 2 + Lado2 * 2;
-            if (Lado1 == Lado2)
-            {
-                Console.WriteLine("Perímetro del cuadrado: " + perimetro);
-            }
-            else
-            {
-                Console.WriteLine("Perímetro del rectángulo: " + perimetro);
-            }
+            Console.WriteLine("Perímetro del rectángulo: " + perimetro);
             return perimetro;
         }
         public override string ToString()
