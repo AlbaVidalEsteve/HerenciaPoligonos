@@ -11,13 +11,18 @@ namespace HerenciaPoligonos
 
         static void Main(string[] args)
         {
+            //Crear diagrama
             Diagrama diagrama = new Diagrama();
-            diagrama.CrearDiagrama();
-            //diagrama.MostrarFormas();
-            diagrama.CalcularAreaTotal();
-            diagrama.CalcularPerimetroTotal();
-            //string tipoCalculo = EscogeCalculo();
-            //EscogeForma(tipoCalculo);     
+            Console.WriteLine("¿Cuantas formas quieres en el diagrama?");
+            int NumFormas = Convert.ToInt32(Console.ReadLine());
+            diagrama.CrearDiagrama(NumFormas);
+            diagrama.MostrarFormas();
+            Console.WriteLine("Área total: "+diagrama.CalcularAreaTotal());
+            Console.WriteLine("Perímetro total: " + diagrama.CalcularPerimetroTotal());
+
+            //Crear forma
+            string tipoCalculo = EscogeCalculo();
+            EscogeForma(tipoCalculo);     
             Console.ReadKey();
         }
 

@@ -54,10 +54,9 @@ namespace HerenciaPoligonos
                 Console.WriteLine($"{tipoForma}: Área = {forma.CalcularArea()}, Perímetro = {forma.CalcularPerimetro()}");
             }
         }
-        public void CrearDiagrama()
+        public void CrearDiagrama(int NumFormas)
         {
-            Console.WriteLine("¿Cuantas formas quieres en el diagrama?");
-            int NumFormas = Convert.ToInt32(Console.ReadLine());
+            
             Random random = new Random();
             for (int i = 0; i < NumFormas; i++)
             {
