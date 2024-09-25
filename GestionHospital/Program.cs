@@ -12,13 +12,7 @@ namespace GestionHospital
         {
             Hospital hospital = new Hospital();
             bool continuar = true;
-            //Administrativo administrativo = new Administrativo("admin");
-            //hospital.AñadirPaciente("Alba");
-            //hospital.AñadirMedico("Pascal");
-            //Medico medico = (Medico)hospital.BuscarPersona("Pascal");
-            //Paciente paciente = (Paciente)hospital.BuscarPersona("Alba");
-            //hospital.AsignarMedico(paciente, medico);
-            //hospital.MostrarPersonal();
+
             while (continuar)
             {
                 Console.WriteLine("\n--- Menú de Gestión del Hospital ---" +
@@ -43,7 +37,7 @@ namespace GestionHospital
                         hospital.AñadirMedico(GetNombreMedico());
                         break;
                     case "2":
-                        Medico medicoAsignado = (Medico)hospital.BuscarPersona(GetNombreMedico());
+                        Medico medicoAsignado = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         if (medicoAsignado != null)
                         {
                             hospital.AñadirPaciente(GetNombrePaciente(), medicoAsignado);
@@ -57,8 +51,8 @@ namespace GestionHospital
                         hospital.AñadirAdministrativo(GetNombre());
                         break;
                     case "4":
-                        Paciente pacienteACambiar = (Paciente)hospital.BuscarPersona(GetNombrePaciente());
-                        Medico medicoNuevo = (Medico)hospital.BuscarPersona(GetNombreMedico());
+                        Paciente pacienteACambiar = hospital.BuscarPersona<Paciente>(GetNombrePaciente());
+                        Medico medicoNuevo = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         if (pacienteACambiar != null && medicoNuevo != null)
                         {
                             hospital.CambiarMedico(pacienteACambiar, medicoNuevo);
@@ -72,20 +66,20 @@ namespace GestionHospital
                         hospital.MostrarPersonal();
                         break;
                     case "6":
-                        hospital.BuscarPersona(GetNombre());
+                        hospital.BuscarPersona<Persona>(GetNombre());
                         break;
                     case "7":
-                        Medico medico1 = (Medico)hospital.BuscarPersona(GetNombreMedico());
+                        Medico medico1 = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         medico1.MostrarPacientes();
                         break;
                     case "8":
-                        Persona persona = hospital.BuscarPersona(GetNombreMedico());
+                        Persona persona = hospital.BuscarPersona<Persona>(GetNombre());
                         //hospital.BorrarPersona();
                         Console.WriteLine("Método en desarrollo...");
                         break;
                     case "9":
-                        Paciente paciente1 = (Paciente)hospital.BuscarPersona(GetNombrePaciente());
-                        Medico medico2 = (Medico)hospital.BuscarPersona(GetNombreMedico());
+                        Paciente paciente1 = hospital.BuscarPersona<Paciente>(GetNombrePaciente());
+                        Medico medico2 = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         hospital.DarDeAlta(paciente1, medico2);
                         break;
                     case "0":

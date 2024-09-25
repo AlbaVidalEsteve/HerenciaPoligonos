@@ -59,10 +59,9 @@ namespace GestionHospital
                 Console.WriteLine(persona);
             }
         }
-        public Persona BuscarPersona(string nombre)
+        public T BuscarPersona<T>(string nombre) where T : Persona
         {
-            Persona persona=ListaPersonas.Find(p => p.Nombre == nombre);
-            return persona;
+            return ListaPersonas.OfType<T>().FirstOrDefault(p => p.Nombre == nombre);
         }
         public void DarDeAlta(Paciente paciente, Medico medico)
         {
