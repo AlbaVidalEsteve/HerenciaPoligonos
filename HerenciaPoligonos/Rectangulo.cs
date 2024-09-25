@@ -8,8 +8,8 @@ namespace HerenciaPoligonos
 {
     internal class Rectangulo : Poligono
     {
-        public double Lado1;
-        public double Lado2;
+        public double Lado1 { get; set; }
+        public double Lado2 { get; set; }
         public Rectangulo(double lado1, double lado2) : base(4)
         {
             this.Lado1 = lado1;

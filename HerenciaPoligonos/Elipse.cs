@@ -8,8 +8,8 @@ namespace HerenciaPoligonos
 {
     internal class Elipse : Formas2D
     {
-        public double Radio1;
-        public double Radio2;
+        public double Radio1 { get; set; }
+        public double Radio2 {  get; set; }
         double PI = Math.PI;
 
         public Elipse(double radio1, double radio2)

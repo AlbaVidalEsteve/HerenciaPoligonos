@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HerenciaPoligonos", "HerenciaPoligonos\HerenciaPoligonos.csproj", "{6A89FB32-3D69-43FC-8D5D-ABB6D254BB28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionHospital", "GestionHospital\GestionHospital.csproj", "{E0BC1FA7-CA56-4649-8E9B-5C57EB811723}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6A89FB32-3D69-43FC-8D5D-ABB6D254BB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A89FB32-3D69-43FC-8D5D-ABB6D254BB28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A89FB32-3D69-43FC-8D5D-ABB6D254BB28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0BC1FA7-CA56-4649-8E9B-5C57EB811723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0BC1FA7-CA56-4649-8E9B-5C57EB811723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0BC1FA7-CA56-4649-8E9B-5C57EB811723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0BC1FA7-CA56-4649-8E9B-5C57EB811723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
