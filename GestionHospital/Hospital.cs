@@ -77,6 +77,60 @@ namespace GestionHospital
                 Console.WriteLine($"El paciente {paciente.Nombre} no está en la lista de este médico.");
             }
         }
+
+        public void DarCita( Medico medico, Paciente paciente)
+        {
+            Cita cita = new Cita(EscogerFecha(), medico, paciente);
+            medico.ListaCitas.Add(cita);
+            paciente.ListaCitas.Add(cita);
+        }
+
+
+
+        public DateTime EscogerFecha()
+        {
+            int diaMes, mes, año, hora, minutos;
+
+            Console.WriteLine("Escoge el día del mes: (Número)");
+            while (!int.TryParse(Console.ReadLine(), out diaMes) || diaMes < 1 || diaMes > 31)
+            {
+                Console.WriteLine("Por favor, introduce un día válido (1-31).");
+            }
+
+            Console.WriteLine("Escoge el mes: (Número)");
+            while (!int.TryParse(Console.ReadLine(), out mes) || mes < 1 || mes > 12)
+            {
+                Console.WriteLine("Por favor, introduce un mes válido (1-12).");
+            }
+
+            Console.WriteLine("Escoge el año: (Número)");
+            while (!int.TryParse(Console.ReadLine(), out año) || año < 1)
+            {
+                Console.WriteLine("Por favor, introduce un año válido (mayor que 0).");
+            }
+
+            Console.WriteLine("Escoge la hora: (Número)");
+            while (!int.TryParse(Console.ReadLine(), out hora) || hora < 0 || hora > 23)
+            {
+                Console.WriteLine("Por favor, introduce una hora válida (0-23).");
+            }
+
+            Console.WriteLine("Escoge los minutos: (Número)");
+            while (!int.TryParse(Console.ReadLine(), out minutos) || minutos < 0 || minutos > 59)
+            {
+                Console.WriteLine("Por favor, introduce minutos válidos (0-59).");
+            }
+
+            
+            if (diaMes > DateTime.DaysInMonth(año, mes))
+            {
+                Console.WriteLine($"El mes {mes} del año {año} solo tiene {DateTime.DaysInMonth(año, mes)} días. Por favor, introduce un día válido.");
+                return EscogerFecha();
+            }
+            DateTime fecha = new DateTime(año, mes, diaMes, hora, minutos, 0);
+            return fecha;
+        }
+
         //public void BorrarPersona(string nombre)
         //{ 
         //    BuscarPersona()

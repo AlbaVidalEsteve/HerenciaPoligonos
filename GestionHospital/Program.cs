@@ -25,6 +25,7 @@ namespace GestionHospital
                 "\n [7] Mostrar Pacientes de Médico" +
                 "\n [8] Borrar Personal" +
                 "\n [9] Dar de alta a un paciente" +
+                "\n [10] Dar cita" +
                 "\n [0] Salir" +
             "\n Seleccione una opción: ");
 
@@ -37,10 +38,11 @@ namespace GestionHospital
                         hospital.AñadirMedico(GetNombreMedico());
                         break;
                     case "2":
+                        string pacienteNuevo = GetNombrePaciente();
                         Medico medicoAsignado = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         if (medicoAsignado != null)
                         {
-                            hospital.AñadirPaciente(GetNombrePaciente(), medicoAsignado);
+                            hospital.AñadirPaciente(pacienteNuevo, medicoAsignado);
                         }
                         else
                         {
@@ -82,6 +84,11 @@ namespace GestionHospital
                         Medico medico2 = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         hospital.DarDeAlta(paciente1, medico2);
                         break;
+                    case "10":
+                        Paciente pacienteSinCita = hospital.BuscarPersona<Paciente>(GetNombrePaciente());
+                        Medico medicoSinCita = hospital.BuscarPersona<Medico>(GetNombreMedico());
+                        hospital.DarCita(medicoSinCita, pacienteSinCita);
+                        break;
                     case "0":
                         continuar = false;
                         break;
@@ -110,7 +117,6 @@ namespace GestionHospital
                 string nombre = Console.ReadLine();
                 return nombre;
             }
-
         }
     } 
 }
