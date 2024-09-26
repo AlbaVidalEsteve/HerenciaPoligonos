@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestionHospital
 {
-    internal class Persona
+    internal abstract class Persona
     {
         public string Nombre { get; set; }
         public string Teléfono { get; set; }

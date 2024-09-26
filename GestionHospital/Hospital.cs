@@ -181,7 +181,7 @@ namespace GestionHospital
                 Console.WriteLine("No hay citas.");
             }
         }
-        public void CancelarCita()
+        public Cita SeleccionarCita()
         {
             List<Cita> citas = ConsultarCitas();
             if (citas.Count > 1)
@@ -189,30 +189,55 @@ namespace GestionHospital
                 if (int.TryParse(Console.ReadLine(), out int seleccion) && seleccion > 0 && seleccion <= citas.Count)
                 {
                     Cita citaSeleccionada = citas[seleccion - 1];
-                    ListaCitas.Remove(citaSeleccionada); 
-                    Console.WriteLine($"Cita cancelada: Médico: {citaSeleccionada.Medico.Nombre}, Fecha: {citaSeleccionada.Fecha}");
+                    return citaSeleccionada;
                 }
                 else
                 {
-                    Console.WriteLine("Selección inválida.");
+                    return null;
                 }
             }
             else if (citas.Count == 1)
             {
                 Cita unicaCita = citas.First();
-                ListaCitas.Remove(unicaCita);
-                Console.WriteLine($"Cita cancelada: Médico: {unicaCita.Medico.Nombre}, Fecha: {unicaCita.Fecha}");
+                return unicaCita;
             }
             else
             {
-                Console.WriteLine("No hay citas para cancelar.");
+                return null;
             }
+        }
+        public void CancelarCita()
+        { 
+            Cita citaSeleccionada = SeleccionarCita();
+            ListaCitas.Remove(citaSeleccionada); 
+            Console.WriteLine($"Cita cancelada: Médico: {citaSeleccionada.Medico.Nombre}, Fecha: {citaSeleccionada.Fecha}");    
         }
         public void ModificarCita()
         {
-            List<Cita> citas = ConsultarCitas();
-
-
+            Cita citaSeleccionada = SeleccionarCita();
+            Console.WriteLine($"Cita seleccionada: Médico: {citaSeleccionada.Medico.Nombre}, Fecha: {citaSeleccionada.Fecha}");
+            Console.WriteLine("--- Dato a modificar: ---" +
+                "\n [1] Médico" +
+                "\n [2] Paciente" +
+                "\n [3] Fecha");
+            if (int.TryParse(Console.ReadLine(), out int seleccion) && seleccion > 0 && seleccion <= 3)
+            {
+                switch (seleccion)
+                {
+                    case 1:
+                        Medico medicoNuevo = BuscarPersona<Medico>();
+                        citaSeleccionada.Medico = medicoNuevo;
+                        break;
+                    case 2:
+                        Paciente pacienteNuevo = BuscarPersona<Paciente>();
+                        citaSeleccionada.Paciente = pacienteNuevo;
+                        break;
+                    case 3:
+                        DateTime fechaNueva = EscogerFecha();
+                        citaSeleccionada.Fecha = fechaNueva;
+                        break;
+                }
+            }
         }
         public DateTime EscogerFecha()
         {
@@ -259,3 +284,4 @@ namespace GestionHospital
         }
     }
 }
+
