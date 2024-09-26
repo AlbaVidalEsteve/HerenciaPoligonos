@@ -22,6 +22,18 @@ namespace GestionHospital
             Console.WriteLine($"Introduce el nombre del {typeof(T).Name.ToLower()}:");
             return Console.ReadLine();
         }
+        public void AñadirAdministrativo()
+        {
+            string nombre = GetNombre<Administrativo>();
+            Administrativo administrativo = new Administrativo(nombre);
+            ListaPersonas.Add(administrativo);
+        }
+        public void AñadirPaciente()
+        {
+            string nombre = GetNombre<Paciente>();
+            Paciente paciente = new Paciente(nombre);
+            ListaPersonas.Add(paciente);
+        }
         public void AñadirMedico()
         {
             string nombre = GetNombre<Medico>();
@@ -37,26 +49,18 @@ namespace GestionHospital
             Medico medico = new Medico(nombre, especialidad);
             ListaPersonas.Add(medico);
         }
-        public void AñadirPaciente()
+        public void AsignarMédico()
         {
+            Paciente paciente = BuscarPersona<Paciente>();
             Medico medicoAsignado = BuscarPersona<Medico>();
-            if (medicoAsignado != null)
+            if (paciente != null && medicoAsignado != null)
             {
-                string nombre = GetNombre<Administrativo>();
-
-                Paciente paciente = new Paciente(nombre, medicoAsignado);
-                ListaPersonas.Add(paciente);
+                paciente.MedicoAsignado = medicoAsignado;
             }
             else
             {
-                Console.WriteLine("Médico no encontrado.");
+                Console.WriteLine("Paciente o Médico no encontrado.");
             }
-        }
-        public void AñadirAdministrativo()
-        {
-            string nombre = GetNombre<Administrativo>();
-            Administrativo administrativo = new Administrativo(nombre);
-            ListaPersonas.Add(administrativo);
         }
         public void CambiarMedico()
         {
@@ -90,7 +94,7 @@ namespace GestionHospital
         }
         public T BuscarPersona<T>() where T : Persona
         {
-            string nombre = GetNombre<Persona>();
+            string nombre = GetNombre<T>();
             return ListaPersonas.OfType<T>().FirstOrDefault(p => p.Nombre == nombre);
         }
         public void DarDeAlta()
@@ -210,7 +214,6 @@ namespace GestionHospital
 
 
         }
-
         public DateTime EscogerFecha()
         {
             int diaMes, mes, año, hora, minutos;

@@ -12,12 +12,13 @@ namespace GestionHospital
       
         public List<string> Diagnosticos { get; set; }
         public List<string> Tratamientos { get; set; }
-        //public List<Cita> ListaCitas { get; set; }
         public Paciente(string nombre, Medico medico) : base(nombre)
         {
             MedicoAsignado = medico;
             medico.ListaPacientes.Add(this);
-            //ListaCitas = new List<Cita>();
+        }
+        public Paciente(string nombre) : base(nombre)
+        {
         }
         public override string ToString()
         {

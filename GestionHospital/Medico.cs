@@ -19,13 +19,10 @@ namespace GestionHospital
     {
         public eEspecialidades Especialidad { get; set; }
         public List<Paciente> ListaPacientes {  get; set; }
-        //public List<Cita> ListaCitas { get; set; }
         public Medico(string nombre,eEspecialidades especialidad) : base(nombre)
         {
-            //Persona medico = new Persona(nombre);
             Especialidad = especialidad;
             ListaPacientes = new List<Paciente>();
-            //ListaCitas = new List<Cita>();
         }
 
         public void MostrarPacientes()
