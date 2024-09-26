@@ -11,16 +11,19 @@ namespace GestionHospital
         public DateTime Fecha;
         public Medico Medico;
         public Paciente Paciente;
+        public eEspecialidades Especialidad;
+        public int Id;
 
         public Cita(DateTime fecha, Medico medico, Paciente paciente)
         {
             Fecha = fecha;
             Medico = medico;
             Paciente = paciente;
+            Especialidad = medico.Especialidad;
         }
         public override string ToString()
         {
-            return $"Paciente: {Paciente}, Médico: {Medico}, Fecha {Fecha}";
+            return $"Paciente: {Paciente}, Médico: {Medico} ({Especialidad}), Fecha {Fecha}";
         }
     }
 }

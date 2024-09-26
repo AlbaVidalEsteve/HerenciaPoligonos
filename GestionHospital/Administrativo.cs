@@ -10,7 +10,7 @@ namespace GestionHospital
     {
         public Administrativo(string nombre) : base(nombre)
         {
-            Persona administrativo = new Persona(nombre);
+            //Persona administrativo = new Persona(nombre);
         }
 
         public override string ToString()

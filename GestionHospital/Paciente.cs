@@ -8,16 +8,16 @@ namespace GestionHospital
 {
     internal class Paciente : Persona
     {
-        public Medico MedicoAsignado {  get; set; }
+        public Medico MedicoAsignado { get; set; }
+      
         public List<string> Diagnosticos { get; set; }
         public List<string> Tratamientos { get; set; }
-        public List<Cita> ListaCitas { get; set; }
+        //public List<Cita> ListaCitas { get; set; }
         public Paciente(string nombre, Medico medico) : base(nombre)
         {
-            Persona paciente = new Persona(nombre);
             MedicoAsignado = medico;
             medico.ListaPacientes.Add(this);
-            ListaCitas = new List<Cita>();
+            //ListaCitas = new List<Cita>();
         }
         public override string ToString()
         {

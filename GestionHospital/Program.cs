@@ -26,6 +26,8 @@ namespace GestionHospital
                 "\n [8] Borrar Personal" +
                 "\n [9] Dar de alta a un paciente" +
                 "\n [10] Dar cita" +
+                "\n [11] Consultar cita" +
+                "\n [12] Cancelar cita" +
                 "\n [0] Salir" +
             "\n Seleccione una opción: ");
 
@@ -89,6 +91,15 @@ namespace GestionHospital
                         Medico medicoSinCita = hospital.BuscarPersona<Medico>(GetNombreMedico());
                         hospital.DarCita(medicoSinCita, pacienteSinCita);
                         break;
+                    case "11":
+                        Persona p = hospital.BuscarPersona<Persona>(GetNombre());
+                        hospital.ConsultarCitas(p);                        
+                        break;
+                    case "12":
+                        Persona p1 = hospital.BuscarPersona<Persona>(GetNombre());
+                        List<Cita> citas = hospital.ConsultarCitas(p1);
+                        hospital.CancelarCita(citas);
+                        break;
                     case "0":
                         continuar = false;
                         break;
@@ -104,7 +115,6 @@ namespace GestionHospital
                 string nombre = Console.ReadLine();
                 return nombre;
             }
-
             string GetNombrePaciente()
             {
                 Console.WriteLine("Nombre del paciente:");

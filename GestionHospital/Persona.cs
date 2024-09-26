@@ -16,12 +16,9 @@ namespace GestionHospital
             Nombre = nombre;
         }
 
-        //public abstract void DarDeAlta();
-
         public override string ToString()
         {
             return Nombre ;
         }
-
     }
 }

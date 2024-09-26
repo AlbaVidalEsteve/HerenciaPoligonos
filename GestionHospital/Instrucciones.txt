@@ -24,4 +24,58 @@ Crear una aplicación de consola, con un menú, que permita:
 
 • Redefinir el método ToString() para cada clase, aprovechando el método de la superclase base.ToString(). 
 
+Hospital v2.0:
+
+Añadir las opciones de:
+
+- Modificar datos de una persona (telèfono, especialdad, etc.)
+
+- Gestión de citas: 
+
+. Implementar una clase de Cita que permita asignar un médico y un paciente a una hora y fecha específicas.
+
+. Incluir funcionalidad para cancelar o modificar citas.
+
+- Gestión del Historial médico:
+
+. Añadir un historial médico para cada paciente, donde se registren las citas, diagnósticos y tratamientos recibidos.
+
+. Posibilidad de que el médico agregue notas o recetas médicas en cada consulta.
+
+---	Explicación Pascal	---
+
+p.Especialidad (propiedad de clase medico y p es tipo persona) -> error de compilación  (exepciones)
+
+p es de tipo estatico
+
+hay que hacer downcasting
+(Medico)p.Especialidad
+
+
+List<Persona> persona;
+
+
+if(p is Medico)
+{
+	(Medico)p.Especialidad
+
+} si comentamos el if error de ejecucion si p no es medico
+
+en lugar de eso ->
+
+if(p is Medico m)
+{
+	(m.Especialidad)
+} 
+
+
+Medico m = (Medico)p; -> si  p no es un medico -> error ejecución
+Medico m = P AS Medico; -> si p no es un medico no puede hacer la conversion y el resultado sera nul -> no dara error de ejecución
+ -> haces AS y compruevas si el resultado es nul
+
+
+
+
+
+
  

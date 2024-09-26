@@ -10,9 +10,11 @@ namespace GestionHospital
     internal class Hospital
     {
         List<Persona> ListaPersonas { get; set; }
+        public List<Cita> ListaCitas { get; set; }
         public Hospital()
         {
             ListaPersonas = new List<Persona>();
+            ListaCitas = new List<Cita>();
         }
 
         public void AñadirMedico(string nombre)
@@ -81,12 +83,71 @@ namespace GestionHospital
         public void DarCita( Medico medico, Paciente paciente)
         {
             Cita cita = new Cita(EscogerFecha(), medico, paciente);
-            medico.ListaCitas.Add(cita);
-            paciente.ListaCitas.Add(cita);
+            ListaCitas.Add(cita);
+
+            //medico.ListaCitas.Add(cita);
+            //paciente.ListaCitas.Add(cita);
         }
 
+        public void ModificarCita(List<Cita> citas)
+        {
+
+        }
+        
+
+        public List<Cita> ConsultarCitas(Persona persona)
+        {
+            switch (persona)
+            {
+                case Medico m:
+                    var citasMedico = ListaCitas.Where(c => c.Medico == m).ToList();
+                    if (citasMedico.Count > 0)
+                    {
+                        Console.WriteLine($"Citas del médico {m.Nombre}:");
+                        foreach (var (cita, index) in citasMedico.Select((cita, index) => (cita, index)))
+                        {
+                            Console.WriteLine($"[{index + 1}] Paciente: {cita.Paciente.Nombre}, Fecha: {cita.Fecha}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"El médico {m.Nombre} no tiene citas.");
+                    }
+                    return citasMedico;
+
+                case Paciente p:
+                    var citasPaciente = ListaCitas.Where(c => c.Paciente == p).ToList();
+                    if (citasPaciente.Count > 0)
+                    {
+                        Console.WriteLine($"Citas del paciente {p.Nombre}:");
+                        foreach (var (cita, index) in citasPaciente.Select((cita, index) => (cita, index)))
+                        {
+                            Console.WriteLine($"[{index + 1}] Médico: {cita.Medico.Nombre}, Fecha: {cita.Fecha}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"El paciente {p.Nombre} no tiene citas.");
+                    }
+                    return citasPaciente;
+
+                default:
+                    Console.WriteLine("La persona no es un médico ni un paciente.");
+                    return new List<Cita>();
+            }
+        }
+
+        public void CancelarCita(List<Cita> citas)
+        {
+            if (citas.Count > 1)
+            {
+                Console.WriteLine("Escoge la cita que quieres cancelar: ");
+                int seleccion = Convert.ToInt32(Console.ReadLine());
 
 
+            }
+
+        }
         public DateTime EscogerFecha()
         {
             int diaMes, mes, año, hora, minutos;
@@ -130,10 +191,5 @@ namespace GestionHospital
             DateTime fecha = new DateTime(año, mes, diaMes, hora, minutos, 0);
             return fecha;
         }
-
-        //public void BorrarPersona(string nombre)
-        //{ 
-        //    BuscarPersona()
-        //}
     }
 }
