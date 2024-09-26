@@ -17,15 +17,14 @@ namespace GestionHospital
             ListaCitas = new List<Cita>();
         }
 
-        string GetNombre(string tipo)
+        public string GetNombre<T>()
         {
-            Console.WriteLine($"Introduce el nombre del {tipo}:");
+            Console.WriteLine($"Introduce el nombre del {typeof(T).Name.ToLower()}:");
             return Console.ReadLine();
         }
-
         public void AñadirMedico()
         {
-            string nombre = GetNombre("médico");
+            string nombre = GetNombre<Medico>();
             Console.WriteLine("---Escoge especialidad---" +
                 "\n [1] Cardiología" +
                 "\n [2] General" +
@@ -40,10 +39,10 @@ namespace GestionHospital
         }
         public void AñadirPaciente()
         {
-            Medico medicoAsignado = BuscarPersona<Medico>(GetNombre("medico"));
+            Medico medicoAsignado = BuscarPersona<Medico>();
             if (medicoAsignado != null)
             {
-                string nombre = GetNombre("administrativo");
+                string nombre = GetNombre<Administrativo>();
 
                 Paciente paciente = new Paciente(nombre, medicoAsignado);
                 ListaPersonas.Add(paciente);
@@ -55,14 +54,14 @@ namespace GestionHospital
         }
         public void AñadirAdministrativo()
         {
-            string nombre = GetNombre("administrativo");
+            string nombre = GetNombre<Administrativo>();
             Administrativo administrativo = new Administrativo(nombre);
             ListaPersonas.Add(administrativo);
         }
         public void CambiarMedico()
         {
-            Paciente paciente = BuscarPersona<Paciente>(GetNombre("paciente"));
-            Medico medicoNuevo = BuscarPersona<Medico>(GetNombre("medico"));
+            Paciente paciente = BuscarPersona<Paciente>();
+            Medico medicoNuevo = BuscarPersona<Medico>();
             if (paciente != null && medicoNuevo != null)
             {
                 if (paciente.MedicoAsignado != medicoNuevo)
@@ -89,14 +88,15 @@ namespace GestionHospital
                 Console.WriteLine(persona);
             }
         }
-        public T BuscarPersona<T>(string nombre) where T : Persona
+        public T BuscarPersona<T>() where T : Persona
         {
+            string nombre = GetNombre<Persona>();
             return ListaPersonas.OfType<T>().FirstOrDefault(p => p.Nombre == nombre);
         }
         public void DarDeAlta()
         {
-            Paciente paciente = BuscarPersona<Paciente>(GetNombre("paciente"));
-            Medico medico = BuscarPersona<Medico>(GetNombre("medico"));
+            Paciente paciente = BuscarPersona<Paciente>();
+            Medico medico = BuscarPersona<Medico>();
             if (medico.ListaPacientes.Contains(paciente))
             {
                 medico.ListaPacientes.Remove(paciente);
@@ -109,25 +109,18 @@ namespace GestionHospital
                 Console.WriteLine($"El paciente {paciente.Nombre} no está en la lista de este médico.");
             }
         }
-
         public void DarCita()
         {
-            Paciente paciente = BuscarPersona<Paciente>(GetNombre("paciente"));
-            Medico medico = BuscarPersona<Medico>(GetNombre("medico"));
+            Paciente paciente = BuscarPersona<Paciente>();
+            Medico medico = BuscarPersona<Medico>();
             Cita cita = new Cita(EscogerFecha(), medico, paciente);
             Guid guid = Guid.NewGuid();
             cita.Id = guid;
             ListaCitas.Add(cita);
         }
-
-        public void ModificarCita(List<Cita> citas)
-        {
-
-        }
-
         public List<Cita> ConsultarCitas()
         {
-            Persona persona = BuscarPersona<Persona>(GetNombre(""));
+            Persona persona = BuscarPersona<Persona>();
             switch (persona)
             {
                 case Medico m:
@@ -184,7 +177,6 @@ namespace GestionHospital
                 Console.WriteLine("No hay citas.");
             }
         }
-
         public void CancelarCita()
         {
             List<Cita> citas = ConsultarCitas();
@@ -212,6 +204,13 @@ namespace GestionHospital
                 Console.WriteLine("No hay citas para cancelar.");
             }
         }
+        public void ModificarCita()
+        {
+            List<Cita> citas = ConsultarCitas();
+
+
+        }
+
         public DateTime EscogerFecha()
         {
             int diaMes, mes, año, hora, minutos;

@@ -52,10 +52,10 @@ namespace GestionHospital
                         hospital.MostrarPersonal();
                         break;
                     case "6":
-                        hospital.BuscarPersona<Persona>(GetNombre(""));
+                        hospital.BuscarPersona<Persona>();
                         break;
                     case "7":
-                        Medico medico1 = hospital.BuscarPersona<Medico>(GetNombre("medico"));
+                        Medico medico1 = hospital.BuscarPersona<Medico>();
                         medico1.MostrarPacientes();
                         break;
                     case "8":
@@ -82,11 +82,7 @@ namespace GestionHospital
                         Console.WriteLine("Opción no válida. Intente nuevamente.");
                         break;
                 }
-                string GetNombre(string tipo)
-                {
-                    Console.WriteLine($"Introduce el nombre del {tipo}:");
-                    return Console.ReadLine();
-                }
+               
             }
             
         }
