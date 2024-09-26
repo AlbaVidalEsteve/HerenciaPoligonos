@@ -12,7 +12,7 @@ namespace GestionHospital
         public Medico Medico;
         public Paciente Paciente;
         public eEspecialidades Especialidad;
-        public int Id;
+        public Guid Id;
 
         public Cita(DateTime fecha, Medico medico, Paciente paciente)
         {

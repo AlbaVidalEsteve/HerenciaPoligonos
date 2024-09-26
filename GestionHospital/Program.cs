@@ -37,68 +37,43 @@ namespace GestionHospital
                 switch (opcion)
                 {
                     case "1":
-                        hospital.AñadirMedico(GetNombreMedico());
+                        hospital.AñadirMedico();
                         break;
                     case "2":
-                        string pacienteNuevo = GetNombrePaciente();
-                        Medico medicoAsignado = hospital.BuscarPersona<Medico>(GetNombreMedico());
-                        if (medicoAsignado != null)
-                        {
-                            hospital.AñadirPaciente(pacienteNuevo, medicoAsignado);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Médico no encontrado.");
-                        }
+                        hospital.AñadirPaciente();
                         break;
                     case "3":
-                        hospital.AñadirAdministrativo(GetNombre());
+                        hospital.AñadirAdministrativo();
                         break;
                     case "4":
-                        Paciente pacienteACambiar = hospital.BuscarPersona<Paciente>(GetNombrePaciente());
-                        Medico medicoNuevo = hospital.BuscarPersona<Medico>(GetNombreMedico());
-                        if (pacienteACambiar != null && medicoNuevo != null)
-                        {
-                            hospital.CambiarMedico(pacienteACambiar, medicoNuevo);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Paciente o médico no encontrado.");
-                        }
+                        hospital.CambiarMedico();                       
                         break;
                     case "5":
                         hospital.MostrarPersonal();
                         break;
                     case "6":
-                        hospital.BuscarPersona<Persona>(GetNombre());
+                        hospital.BuscarPersona<Persona>(GetNombre(""));
                         break;
                     case "7":
-                        Medico medico1 = hospital.BuscarPersona<Medico>(GetNombreMedico());
+                        Medico medico1 = hospital.BuscarPersona<Medico>(GetNombre("medico"));
                         medico1.MostrarPacientes();
                         break;
                     case "8":
-                        Persona persona = hospital.BuscarPersona<Persona>(GetNombre());
+                        //Persona persona = hospital.BuscarPersona<Persona>(GetNombre());
                         //hospital.BorrarPersona();
                         Console.WriteLine("Método en desarrollo...");
                         break;
-                    case "9":
-                        Paciente paciente1 = hospital.BuscarPersona<Paciente>(GetNombrePaciente());
-                        Medico medico2 = hospital.BuscarPersona<Medico>(GetNombreMedico());
-                        hospital.DarDeAlta(paciente1, medico2);
+                    case "9":                        
+                        hospital.DarDeAlta();
                         break;
-                    case "10":
-                        Paciente pacienteSinCita = hospital.BuscarPersona<Paciente>(GetNombrePaciente());
-                        Medico medicoSinCita = hospital.BuscarPersona<Medico>(GetNombreMedico());
-                        hospital.DarCita(medicoSinCita, pacienteSinCita);
+                    case "10":                        
+                        hospital.DarCita();
                         break;
                     case "11":
-                        Persona p = hospital.BuscarPersona<Persona>(GetNombre());
-                        hospital.ConsultarCitas(p);                        
+                        hospital.ConsultarCitas();                        
                         break;
                     case "12":
-                        Persona p1 = hospital.BuscarPersona<Persona>(GetNombre());
-                        List<Cita> citas = hospital.ConsultarCitas(p1);
-                        hospital.CancelarCita(citas);
+                        hospital.CancelarCita();
                         break;
                     case "0":
                         continuar = false;
@@ -107,26 +82,13 @@ namespace GestionHospital
                         Console.WriteLine("Opción no válida. Intente nuevamente.");
                         break;
                 }
-
+                string GetNombre(string tipo)
+                {
+                    Console.WriteLine($"Introduce el nombre del {tipo}:");
+                    return Console.ReadLine();
+                }
             }
-            string GetNombre()
-            {
-                Console.WriteLine("Nombre:");
-                string nombre = Console.ReadLine();
-                return nombre;
-            }
-            string GetNombrePaciente()
-            {
-                Console.WriteLine("Nombre del paciente:");
-                string nombre = Console.ReadLine();
-                return nombre;
-            }
-            string GetNombreMedico()
-            {
-                Console.WriteLine("Nombre del médico:");
-                string nombre = Console.ReadLine();
-                return nombre;
-            }
+            
         }
     } 
 }
